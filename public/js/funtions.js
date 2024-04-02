@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Realizar una solicitud AJAX para enviar los datos del formulario al servidor
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3000/enviar-correo', true);
+        xhr.open('POST', 'https://dqyasociados.vercel.app/enviar-correo', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
