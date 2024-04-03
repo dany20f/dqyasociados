@@ -35,7 +35,7 @@ app.post('/enviar-correo', async (req, res) => {
 });
 
 // Configurar Express para servir archivos estáticos desde la carpeta 'public'
-app.use(express.static(path.join(__dirname, '..', '..','public')));
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 // Ruta para cargar la página de index.html
 app.get('/', (req, res) => {
