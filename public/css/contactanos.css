@@ -80,7 +80,7 @@ main {
     width: 100vw;
     display: flex;
     justify-content: space-around;
-    background: #e2e2e2fa;
+    background: #fbfbfb;
     padding: 1rem;
 
     & .left_section {
@@ -91,9 +91,11 @@ main {
         justify-content: start;
         align-items: center;
         row-gap: 3rem;
+     
 
         & .left_section_span {
             width: 100%;
+
 
 
             & h2 {
@@ -119,137 +121,138 @@ main {
             }
         }
     }
-}
-
-
-/* Formulario de contacto */
 
 
 
-.right_section {
-    width: 40vw;
-    margin-top: 3rem;
-}
-
-.contact_form {
-    height: auto;
-    padding: 1rem;
-}
+    /* Formulario de contacto */
 
 
-input {
-    background-color: #fbfbfb;
-    width: 408px;
-    height: 40px;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(0, 0, 255);
-    margin-top: 10px;
-    padding-left: 10px;
-    margin-bottom: 20px;
-}
+
+    & .right_section {
+        width: 40vw;
+        margin-top: 3rem;
+      
 
 
-textarea {
-    background-color: #fbfbfb;
-    width: 405px;
-    height: 150px;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(0, 0, 255);
-    margin-top: 10px;
-    padding-left: 10px;
-    margin-bottom: 20px;
-    padding-top: 15px;
-}
+        & .contact_form {
+            height: auto;
+            padding: 1rem;
+
+            input {
+                background-color: #fbfbfb;
+                width: 408px;
+                height: 40px;
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: rgb(0, 0, 255);
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: 20px;
+            }
 
 
-label {
-    display: block;
-    float: center;
-}
+            textarea {
+                background-color: #fbfbfb;
+                width: 405px;
+                height: 150px;
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: rgb(0, 0, 255);
+                margin-top: 10px;
+                padding-left: 10px;
+                margin-bottom: 20px;
+                padding-top: 15px;
+            }
 
 
-button {
-    height: 45px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    text-transform: uppercase;
-    background-color: rgb(0, 0, 255);
-    border-color: rgb(0, 0, 255);
-    border-style: solid;
-    border-radius: 10px;
-    width: 420px;
-    cursor: pointer;
-}
+            label {
+                display: block;
+                float: center;
+            }
 
 
-button p {
-    color: #fff;
-}
+            button {
+                height: 45px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-bottom: 20px;
+                margin-top: 10px;
+                text-transform: uppercase;
+                background-color: rgb(0, 0, 255);
+                border-color: rgb(0, 0, 255);
+                border-style: solid;
+                border-radius: 10px;
+                width: 420px;
+                cursor: pointer;
+            }
 
 
-span {
-    color: rgb(255, 0, 0);
-}
+            button p {
+                color: #fff;
+            }
 
 
-.aviso {
-    font-size: 13px;
-    color: #0e0e0e;
-}
+            span {
+                color: rgb(255, 0, 0);
+            }
 
 
-h1 {
-    font-size: 39px;
-    text-align: letf;
-    padding-bottom: 20px;
-    color: rgb(0, 0, 255);
-}
+            .aviso {
+                font-size: 13px;
+                color: #0e0e0e;
+            }
 
 
-/* h3 {
+            h1 {
+                font-size: 39px;
+                text-align: letf;
+                padding-bottom: 20px;
+                color: rgb(0, 0, 255);
+            }
+        }
+    }
+
+    /* h3 {
     font-size: 16px;
     padding-bottom: 30px;
     color: #0e0e0e;
 } */
 
 
-p {
-    font-size: 1.5rem;
-    color: #0e0e0e;
+    p {
+        font-size: 1.5rem;
+        color: #0e0e0e;
+
+    }
+
+
+    ::-webkit-input-placeholder {
+        color: #a8a8a8;
+    }
+
+
+    ::-webkit-textarea-placeholder {
+        color: #a8a8a8;
+    }
+
+
+    .formulario input:focus {
+        outline: 0;
+        border: 1px solid #ff0000;
+    }
+
+
+    .formulario textarea:focus {
+        outline: 0;
+        border: 1px solid #ff0000;
+
+
+    }
+
+    /* Fin de la seccion contactanos */
 }
-
-
-::-webkit-input-placeholder {
-    color: #a8a8a8;
-}
-
-
-::-webkit-textarea-placeholder {
-    color: #a8a8a8;
-}
-
-
-.formulario input:focus {
-    outline: 0;
-    border: 1px solid #ff0000;
-}
-
-
-.formulario textarea:focus {
-    outline: 0;
-    border: 1px solid #ff0000;
-
-
-}
-
-/* Fin de la seccion contactanos */
-
 
 /* Inicio del FOOTER  */
 
