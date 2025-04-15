@@ -69,67 +69,36 @@
                         <div class="formulario">
                             <form id="formulario-contacto" action="https://dqyasociados.vercel.app/enviar-correo" method="POST">
                                 <p>
-                                    <label for="nombre"
-                                        class="colocar_nombre">Nombre
-                                        <span class="obligatorio">*</span>
-                                    </label>
-                                    <input type="text" name="introducir_nombre"
-                                        id="nombre"
-                                        required="obligatorio"
-                                        placeholder="Escribe tu nombre">
+                                    <label for="nombre" class="colocar_nombre">Nombre <span class="obligatorio">*</span></label>
+                                    <input type="text" name="nombre" id="nombre" required placeholder="Escribe tu nombre">
                                 </p>
-
+                            
                                 <p>
-                                    <label for="email"
-                                        class="colocar_email">Email
-                                        <span class="obligatorio">*</span>
-                                    </label>
-                                    <input type="email" name="introducir_email"
-                                        id="email"
-                                        required="obligatorio"
-                                        placeholder="Escribe tu Email">
+                                    <label for="email" class="colocar_email">Email <span class="obligatorio">*</span></label>
+                                    <input type="email" name="email" id="email" required placeholder="Escribe tu Email">
                                 </p>
-
+                            
                                 <p>
-                                    <label for="telefone"
-                                        class="colocar_telefono">Teléfono
-                                    </label>
-                                    <input type="tel" name="introducir_telefono"
-                                        id="telefono"
-                                        placeholder="Escribe tu teléfono">
+                                    <label for="telefono" class="colocar_telefono">Teléfono</label>
+                                    <input type="tel" name="telefono" id="telefono" placeholder="Escribe tu teléfono">
                                 </p>
-
+                            
                                 <p>
-                                    <label for="asunto"
-                                        class="colocar_asunto">Asunto
-                                        <span class="obligatorio">*</span>
-                                    </label>
-                                    <input type="text" name="introducir_asunto"
-                                        id="asunto"
-                                        required="obligatorio"
-                                        placeholder="Escribe un asunto">
+                                    <label for="asunto" class="colocar_asunto">Asunto <span class="obligatorio">*</span></label>
+                                    <input type="text" name="asunto" id="asunto" required placeholder="Escribe un asunto">
                                 </p>
-
+                            
                                 <p>
-                                    <label for="mensaje"
-                                        class="colocar_mensaje">Mensaje
-                                        <span class="obligatorio">*</span>
-                                    </label>
-                                    <textarea name="introducir_mensaje"
-                                        class="texto_mensaje" id="mensaje"
-                                        required="obligatorio"
-                                        placeholder="Deja aquí tu comentario..."></textarea>
+                                    <label for="mensaje" class="colocar_mensaje">Mensaje <span class="obligatorio">*</span></label>
+                                    <textarea name="mensaje" id="mensaje" required placeholder="Deja aquí tu comentario..."></textarea>
                                 </p>
-
-                                <button type="submit" name="enviar_formulario"
-                                    id="enviar"><p>Enviar</p></button>
+                            
+                                <button type="submit" name="enviar_formulario" id="enviar">Enviar</button>
                                 <p class="aviso">
-                                    <span class="obligatorio"> * </span>los
-                                    campos son
-                                    obligatorios.
+                                    <span class="obligatorio">* </span>Los campos son obligatorios.
                                 </p>
-
                             </form>
+                            
                         </div>
                     </div>
                 </div>

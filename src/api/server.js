@@ -1,49 +1,72 @@
+require('dotenv').config(); // Carga las variables de entorno desde el archivo .env
 const express = require('express');
-const { Resend } = require('resend');
 const cors = require('cors');
+const { Resend } = require('resend');
 const path = require('path');
 
 const app = express();
-const resend = new Resend('re_Fp5ZZciF_P9XX2tat9WqLt8UdVAiepW1p');
+const PORT = process.env.PORT || 3000;
 
+// Inicializa Resend con la clave API desde las variables de entorno
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Middlewares
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Para manejar solicitudes con JSON
+app.use(express.urlencoded({ extended: true })); // Para manejar solicitudes con formularios (URL-encoded)
 
 // Ruta para enviar el formulario de correo
 app.post('/enviar-correo', async (req, res) => {
-    const { introducir_nombre, introducir_email, introducir_telefono, introducir_asunto, introducir_mensaje } = req.body;
+    const { nombre, email, telefono, asunto, mensaje } = req.body;
+
+    // Validar los campos obligatorios
+    if (!nombre || !email || !asunto || !mensaje) {
+        return res.status(400).json({ error: 'Todos los campos obligatorios deben ser completados.' });
+    }
 
     try {
+        // Enviar el correo electrónico usando Resend
         const { data, error } = await resend.emails.send({
-            from: 'DQYASOCIADOS WEB <onboarding@resend.dev>',
-            to: 'danielwfq@gmail.com',
-            subject: 'FORMULARIO WEB',
-            html: `<p>Nombre: ${introducir_nombre}</p><p>Email: ${introducir_email}</p><p>Teléfono: ${introducir_telefono}</p><p>Asunto: ${introducir_asunto}</p><p>Mensaje: ${introducir_mensaje}</p>`,
+            from: 'DQ & Asociados <onboarding@resend.dev>',
+            to: 'danielwfq@gmail.com', // Cambia este correo al destinatario deseado
+            subject: `Formulario Web - ${asunto}`,
+            html: `
+                <h1>Nuevo mensaje de contacto</h1>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Teléfono:</strong> ${telefono || 'No proporcionado'}</p>
+                <p><strong>Mensaje:</strong></p>
+                <p>${mensaje}</p>
+            `,
         });
 
         if (error) {
-            console.error({ error });
-            res.status(500).send('Hubo un error al enviar el correo.');
-        } else {
-            console.log({ data });
-            res.status(200).send('El correo se envió correctamente.');
+            console.error('Error al enviar el correo:', error);
+            return res.status(500).json({ error: 'Hubo un error al enviar el correo.' });
         }
+
+        res.status(200).json({ message: 'El correo se envió correctamente.', data });
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Hubo un error en el servidor.');
+        console.error('Error inesperado:', err);
+        res.status(500).json({ error: 'Hubo un error en el servidor al enviar el correo.' });
     }
 });
 
-// Configurar Express para servir archivos estáticos desde la carpeta 'public'
+// Configuración de la carpeta de archivos estáticos
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
-// Ruta para cargar la página de index.html
+// Ruta para cargar el archivo index.html
 app.get('/', (req, res) => {
     const indexPath = path.join(__dirname, '..', '..', 'public', 'index.html');
     res.sendFile(indexPath);
 });
+// Manejar solicitudes con cuerpo JSON
+app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+app.use(express.urlencoded({ extended: true })); // Manejar solicitudes URL-encoded (formularios)
+app.use(express.json()); // Manejar solicitudes con JSON
+
+// Inicio del servidor
 app.listen(PORT, () => {
-    console.log(`Servidor Express escuchando en el puerto ${PORT}`);
+    console.log(`Servidor Express escuchando en http://localhost:${PORT}`);
 });

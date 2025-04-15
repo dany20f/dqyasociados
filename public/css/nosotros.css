@@ -260,7 +260,9 @@ body {
 }
 
 .valores-left-content img {
-    height: 15rem;
+    height: 20vw;
+    max-width: 650px;
+    max-height: 450px;
 }
 
 .content_right_valores {
@@ -268,21 +270,24 @@ body {
     max-width: 1000px;
     display: flex;
     flex-direction: column;
+    border-bottom: 2px solid rgb(201, 201, 201);
 
 }
 
 .short_content_values {
 
     width: 35vw;
+    
 }
 
 .valores_tittle {
     height: 2rem;
     background-color: #ffffff;
-    margin: 1px;
+    margin: 3px;
     display: flex;
     flex-direction: column;
     place-content: center;
+    border-top: 2px solid rgb(201, 201, 201);
 
 }
 

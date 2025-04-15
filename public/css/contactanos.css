@@ -80,7 +80,7 @@ main {
     width: 100vw;
     display: flex;
     justify-content: space-around;
-    background: #e2e2e2fa;
+    background: #f7f7f7fa;
     padding: 1rem;
 
     & .left_section {

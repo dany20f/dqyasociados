@@ -1,5 +1,5 @@
 // HEADER
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const currentPage = window.location.pathname.split('/').pop();
     const links = document.querySelectorAll('.header-links a');
     const menu = document.getElementById('menu2');
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // PORTADA
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     // Selecciona todos los elementos con la clase 'slide' y los almacena en la variable 'slides'
     const slides = document.querySelectorAll('.slide');
     // Selecciona el botón de siguiente y lo almacena en la variable 'nextBtn'
@@ -151,8 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // SERVICIOS_INDEX
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const prevBtn = document.querySelector(".prev_serv");
     const nextBtn = document.querySelector(".next_serv");
     const container = document.querySelector(".container_cards");
@@ -192,40 +191,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //SCRIPTS DE LA PESTAÑA NOSOTROS
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", function() {
     const titles = document.querySelectorAll('.valores_tittle');
-    let rotated = false; // Movemos la declaración de rotated aquí para que sea accesible en todo el alcance de la función
 
     // Agregar evento click a cada título
     titles.forEach(title => {
         title.addEventListener('click', function () {
             const concept = this.nextElementSibling;
+            const image = this.querySelector('.valores_X');
+
             const isConceptOpen = concept.classList.contains('show');
 
             // Ocultar todos los conceptos y restablecer la rotación de las imágenes
             hideAllConceptsAndResetImages();
 
-            // Mostrar el concepto asociado al título clickeado
+            // Mostrar el concepto asociado al título clickeado y rotar su imagen
             if (!isConceptOpen) {
                 concept.classList.add('show');
-            }
-        });
-
-        // Agregar evento de clic al contenedor .valores_tittle
-        title.addEventListener('click', function () {
-            const image = this.querySelector('.valores_X'); // Asegurémonos de seleccionar la imagen dentro del título actual
-            // Rotar la imagen 45 grados o volver a su estado original según el estado actual
-            if (!rotated) {
                 image.style.transform = 'rotate(45deg)';
             } else {
                 image.style.transform = 'rotate(0deg)';
             }
-
-            // Cambiar el estado de rotación
-            rotated = !rotated;
         });
     });
 
@@ -236,8 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
             concept.classList.remove('show');
         });
 
-        // Restablecer la rotación de todas las imágenes dentro de .valores_tittle
-        const images = document.querySelectorAll('.valores_tittle');
+        const images = document.querySelectorAll('.valores_X');
         images.forEach(image => {
             image.style.transform = 'rotate(0deg)';
         });
@@ -247,32 +232,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 //SCRIPTS DE LA PESTAÑA CONTACTANOS
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formulario-contacto").addEventListener("submit", function (event) {
+    document.getElementById("formulario-contacto").addEventListener("submit", async function (event) {
         event.preventDefault(); // Evita que el formulario se envíe normalmente
 
         // Obtener los datos del formulario
         const formData = new FormData(this);
 
-        // Realizar una solicitud AJAX para enviar los datos del formulario al servidor
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://dqyasociados.vercel.app/enviar-correo', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    alert('Formulario enviado');
-                    document.getElementById("formulario-contacto").reset(); // Restablecer el formulario
-                } else {
-                    alert('Hubo un error al enviar el formulario');
-                }
-            }
-        };
-        xhr.send(new URLSearchParams(formData));
-    });
+        // Convertir formData a JSON
+        const formDataJSON = Object.fromEntries(formData.entries());
 
+        try {
+            // Enviar los datos al servidor usando Fetch
+            const response = await fetch('http://localhost:3000/enviar-correo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formDataJSON),
+            });
+
+            if (response.ok) {
+                alert('Formulario enviado correctamente.');
+                this.reset(); // Restablecer el formulario
+            } else {
+                alert('Hubo un error al enviar el formulario.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un error inesperado al enviar el formulario.');
+        }
+    });
 });
 
 
@@ -280,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //Funcion PARA EL CANBIO AUTOMATICO DEL COPYRIGHT
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     // Obtener el elemento del pie de página
     var copyrightElement = document.getElementById("copyright");
 
